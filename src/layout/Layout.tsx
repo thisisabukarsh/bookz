@@ -11,7 +11,7 @@ const Layout = (props: any) => {
     <div
       className={`${poppins.variable} ${lalezar.variable} ${manrope.variable} ltr:${manrope.className} rtl:${rubik.className} font-semibold relative z-0`}
     >
-      <Header />
+      <Header parentClass="relative z-20 w-full top-0 bg-white shadow-md transition-transform" />
 
       <div className="bg-white">{props.children}</div>
 

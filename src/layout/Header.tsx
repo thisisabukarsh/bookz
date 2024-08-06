@@ -1,24 +1,29 @@
 import { lalezar } from "@/utils/font";
 import Link from "next/link";
+import Image from "next/image";
+import MainLogo from "@/icons/layout/logo.svg";
 
-const pagesButtons = [
-  {
-    title: "Home",
-    route: "/",
-  },
-  {
-    title: "About",
-    route: "/about",
-  },
-  {
-    title: "Profile",
-    route: "/profile",
-  },
-];
+interface HeaderProps {
+  parentClass: string;
+}
 
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ parentClass }) => {
+  const pagesButtons = [
+    {
+      title: "Home",
+      route: "/",
+    },
+    {
+      title: "About",
+      route: "/about",
+    },
+    {
+      title: "Profile",
+      route: "/profile",
+    },
+  ];
   return (
-    <header className="relative z-20 w-full top-0 bg-white shadow-md transition-transform">
+    <header className={`${parentClass}`}>
       {/* <div>for head translation or something like that </div> */}
       <nav className="container mx-auto py-3 flex justify-between items-center lg:max-w-screen-dt ">
         <div className="flex flex-row items-center justify-center gap-8">
@@ -26,8 +31,15 @@ const Header = () => {
             className="flex items-center justify-center px-2 md:px-0"
             href="/"
           >
-            <div className={`mt-2 text-3xl md:text-4xl ${lalezar.className}`}>
-              Book-<span className="text-BookBlue">Z</span>
+            <Image
+              src={MainLogo}
+              alt="Book-Z logo"
+              className={`h-7 w-7 md:h-8 md:w-8 `}
+            />
+            <div
+              className={`mt-2 text-3xl md:text-4xl pl-1 ${lalezar.className}`}
+            >
+              Book-Z
             </div>
           </Link>
           <div className="hidden flex-row lg:flex justify-center items-center">
