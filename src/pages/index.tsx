@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Landing from "../components/home/Landing";
+import Landing from "../components/home/landing/Landing";
 import { poppins, rubik } from "@/utils/font";
 import { useEffect, useState } from "react";
 

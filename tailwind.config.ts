@@ -9,6 +9,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        fadeInOut: {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: "1" },
+        },
+        blink: {
+          "from, to": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        fadeInOut: "fadeInOut 12s forwards",
+        blink: "blink 1s step-end infinite",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
