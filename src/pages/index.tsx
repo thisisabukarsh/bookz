@@ -4,6 +4,7 @@ import Head from "next/head";
 import Landing from "../components/home/landing/Landing";
 import { poppins, rubik } from "@/utils/font";
 import { useEffect, useState } from "react";
+import Tabs from "@/components/home/tabs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,9 @@ export default function Home() {
       </Head>
       <div className="w-full md:text-xs relative md:h-[550px]">
         <Landing />
+      </div>
+      <div className="px-4 lg:px-0 mt-10 lg:mt-14 flex justify-center">
+        <Tabs />
       </div>
     </div>
   );

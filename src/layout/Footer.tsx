@@ -1,4 +1,4 @@
-import AddListingCard from "@/components/cards/addListingCard";
+import AddBookCard from "@/components/cards/addBookCard";
 import Link from "next/link";
 import Image from "next/image";
 import MainLogo from "@/icons/layout/logo.svg";
@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
 
       <div className="w-full">
-        <AddListingCard />
+        <AddBookCard />
       </div>
       <div className="w-full flex items-center justify-center">
         <div className="flex justify-between md:flex-row pt-10 md:pt-12 w-full lg:max-w-screen-dt">

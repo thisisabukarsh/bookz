@@ -1,6 +1,6 @@
 import GeneralButton from "../buttons/generalButton";
 
-const AddListingCard = () => {
+const AddBookCard = () => {
   return (
     <div className="bg-blue-1 w-full flex items-center justify-center">
       <div className="flex flex-col lg:flex-row lg:max-w-screen-dt w-full items-center">
@@ -21,4 +21,4 @@ const AddListingCard = () => {
   );
 };
 
-export default AddListingCard;
+export default AddBookCard;
