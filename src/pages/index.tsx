@@ -16,7 +16,7 @@ export default function Home() {
       <div className="w-full md:text-xs relative md:h-[550px]">
         <Landing />
       </div>
-      <div className="px-4 lg:px-0 mt-10 lg:mt-14 flex justify-center flex-col ">
+      <div className="px-4 lg:px-0 mt-10 lg:mt-14 flex justify-center flex-col">
         <Tabs />
         <Cards />
       </div>

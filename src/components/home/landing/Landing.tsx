@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Title from "./Title";
-import LoginSingUpButton from "./LoginSignUpButtons";
+import LoginSignUpButton from "./LoginSignUpButtons";
 
 const LandingPage = () => {
   return (
@@ -19,7 +19,7 @@ const LandingPage = () => {
         <div className="h-full w-full z-10 lg:max-w-screen-dt">
           <div className="h-full md:flex  justify-between items-center mx-9">
             <Title />
-            <LoginSingUpButton />
+            <LoginSignUpButton />
           </div>
         </div>
       </div>
