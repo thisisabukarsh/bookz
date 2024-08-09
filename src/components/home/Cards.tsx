@@ -1,12 +1,10 @@
 import { useState, useContext, useEffect } from "react";
-// import { FaPlus, FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
 const Cards = () => {
   const serverBaseUrl = "http://localhost:5050";
 
-  // Dummy data for posts
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -52,7 +50,6 @@ const Cards = () => {
     },
   ]);
 
-  // Dummy data for userData
   const [userData] = useState({
     isAuthenticated: true,
     username: "JohnDoe",
