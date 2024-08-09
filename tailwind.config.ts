@@ -9,6 +9,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      opacity: {
+        "0": "0",
+        "100": "1",
+      },
+      transitionProperty: {
+        opacity: "opacity",
+      },
+      transitionDuration: {
+        "600": "600ms",
+      },
       keyframes: {
         fadeInOut: {
           "0%, 100%": { opacity: "0" },
