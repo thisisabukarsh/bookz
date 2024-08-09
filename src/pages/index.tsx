@@ -3,10 +3,15 @@ import Head from "next/head";
 import Landing from "../components/home/landing/Landing";
 import Tabs from "@/components/home/Tabs";
 import Cards from "@/components/home/Cards";
+import Categories from "@/components/home/categories";
+import ImageGallery from "@/components/cards/imageGallery";
+import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  useScrollFadeIn();
+
   return (
     <div>
       <Head>
@@ -17,7 +22,9 @@ export default function Home() {
         <Landing />
       </div>
       <div className="px-4 lg:px-0 mt-10 lg:mt-14 flex justify-center flex-col">
-        <Tabs />
+        {/* <Tabs /> */}
+        <ImageGallery />
+        <Categories />
         <Cards />
       </div>
     </div>
