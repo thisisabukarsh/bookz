@@ -23,9 +23,9 @@ const Tabs: React.FC = () => {
   };
 
   return (
-    <div className="px-4 lg:px-0 flex justify-center md:bg-blue-100 pt-6 md:pt-14">
-      <div className="md:flex flex-col w-full lg:max-w-screen-dt ">
-        <div className="flex flex-row gap-9 mt-5 lg:mt-6 text-base font-semibold lg:border-b-2 border-grey-1 ">
+    <div className="px-4 lg:px-0 flex justify-center">
+      <div className="md:flex flex-col w-screen lg:max-w-screen-dt ">
+        <div className="flex flex-row gap-9 lg:mt-6 text-base font-semibold lg:border-b-2 border-grey-1 ">
           {tabsData.tabs.map((tab: Tab) => (
             <button
               key={tab.label}
