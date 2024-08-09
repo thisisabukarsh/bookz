@@ -52,7 +52,7 @@ const Footer = () => {
             <div className="text-base font-extrabold md:pb-2.5">Book-Z</div>
             <div className="flex flex-col text-sm font-normal md:flex-row divide-x-0 md:divide-x divide-grey-16 ">
               {[
-                { title: "About Us ", link: "/about-us" },
+                { title: "About Us ", link: "/about" },
                 { title: "Contact Us", link: "/contact-us" },
                 { title: "Privacy", link: "/privacy" },
                 { title: "Terms of Use", link: "/terms" },
