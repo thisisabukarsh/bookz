@@ -44,19 +44,21 @@ const Title = () => {
 
   return (
     <div
-      className={`mt-2 md:mt-7 md:mb-7 font-bold ltr:${poppins.className} rtl:${rubik.className} max-w-[50%]`}
+      className={`mt-2 md:mt-7 mb-7 font-bold ltr:${poppins.className} rtl:${rubik.className} lg:max-w-[50%] md:max-w-[50%]`}
     >
-      <h2 className="text-left text-lg lg:text-4xl md:text-white">
+      <h2 className={`text-left text-lg lg:text-4xl text-white`}>
         Hello There
       </h2>
-      <p
-        className={`text-left my-6 text-sm lg:text-2xl md:text-white ltr:tracking-widest md:tracking-[2.5px] ${
-          fadeIn ? "animate-fadeIn" : "animate-fadeOut"
-        }`}
-      >
-        {typedText}
-        <span className="typing-cursor animate-blink">|</span>
-      </p>
+      <div className="h-6">
+        <p
+          className={`text-left my-6 text-sm lg:text-2xl md: text-white ltr:tracking-widest md:tracking-[2.5px] ${
+            fadeIn ? "animate-fadeIn" : "animate-fadeOut"
+          }`}
+        >
+          {typedText}
+          <span className="typing-cursor animate-blink">|</span>
+        </p>
+      </div>
     </div>
   );
 };
