@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -75,6 +75,9 @@ const Cards = () => {
       )
     : filteredPostsBy;
 
+  // Limit the number of posts to show initially
+  const postsToShow = filteredPosts.slice(0, 6);
+
   return (
     <div className="px-4 lg:px-0 flex justify-center">
       <div className="md:flex flex-col w-screen lg:max-w-screen-dt ">
@@ -96,7 +99,7 @@ const Cards = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredPosts.map((post: any) => (
+              {postsToShow.map((post) => (
                 <Link href={`/books/${post.id}`} key={post.id} passHref>
                   <div className="card cursor-pointer p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200">
                     {/* <img
@@ -118,6 +121,15 @@ const Cards = () => {
                 </Link>
               ))}
             </div>
+            {filteredPosts.length >= 6 && (
+              <div className="mt-8">
+                <Link href="/more-posts">
+                  <div className="flex items-center justify-center mx-auto max-w-4xl py-4 px-6 rounded-lg border-2 border-blue-500 text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-300 cursor-pointer">
+                    Show More
+                  </div>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

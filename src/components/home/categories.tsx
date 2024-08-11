@@ -33,12 +33,23 @@ const categories: Category[] = [
     description: "Learn about historical events and figures.",
     image: "/assets/exchange2.jpg",
   },
-  // Add more categories as needed
+  {
+    id: "art",
+    name: "Art",
+    description: "Dive into the world of art and creativity.",
+    image: "/assets/exchangePP.jpg",
+  },
+  {
+    id: "music",
+    name: "Music",
+    description: "Experience the world of music and sounds.",
+    image: "/assets/exchange2.jpg",
+  },
 ];
 
 const Categories: React.FC = () => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center px-4 lg:px-0">
       <div className="w-full max-w-screen-lg mb-16 fade-in opacity-0 transition-opacity duration-600">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Explore by Categories
