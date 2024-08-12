@@ -49,7 +49,7 @@ const AddPostPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-md border border-gray-200">
+    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-md border border-gray-200 my-6">
       <h1 className="text-3xl font-bold mb-6">Add New Post</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
