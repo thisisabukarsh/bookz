@@ -2,11 +2,25 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axios";
 
+interface Post {
+  id: string;
+  userId: string;
+  title: string;
+  condition: string;
+  description: string;
+  imageUrl: string;
+  phoneNumber: string;
+}
 interface User {
   id: string;
   username: string;
   email: string;
+  phoneNumber?: string; // Added phone number
   password?: string;
+  imageUrl?: string;
+  averageRating: number;
+  books: Post[];
+  ratings: number[];
 }
 
 interface UserState {
@@ -21,7 +35,11 @@ const dummyUser: User = {
   id: "0",
   username: "Guest",
   email: "guest@example.com",
+  phoneNumber: "0000000000", // Dummy phone number
   password: "dummyPassword",
+  averageRating: 0,
+  books: [],
+  ratings: [],
 };
 
 const initialState: UserState = {
@@ -34,10 +52,10 @@ const initialState: UserState = {
 // Thunk for user signup
 export const signupUser = createAsyncThunk<
   User,
-  { username: string; email: string; password: string }
+  { Username: string; Email: string; phoneNumber: string; Password: string }
 >("user/signupUser", async (credentials) => {
   try {
-    const response = await api.post<User>("/users/signup", credentials);
+    const response = await api.post<User>("/account/register", credentials);
     return response.data;
   } catch (error) {
     throw new Error("Signup failed. Please try again."); // Return an error message on failure
@@ -50,7 +68,7 @@ export const loginUser = createAsyncThunk<
   { username: string; password: string }
 >("user/loginUser", async (credentials) => {
   try {
-    const response = await api.post<User>("/users/login", credentials);
+    const response = await api.post<User>("/account/login", credentials);
     return response.data;
   } catch (error) {
     throw new Error("Login failed. Please check your credentials."); // Throw an error on failure
@@ -90,6 +108,11 @@ const userSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
+    },
+    setPhoneNumber: (state, action: PayloadAction<string>) => {
+      if (state.user) {
+        state.user.phoneNumber = action.payload;
+      }
     },
     setPassword: (state, action: PayloadAction<string>) => {
       if (state.user) {
@@ -136,5 +159,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { login, logout, setPassword } = userSlice.actions;
+export const { login, logout, setPhoneNumber, setPassword } = userSlice.actions;
 export default userSlice.reducer;

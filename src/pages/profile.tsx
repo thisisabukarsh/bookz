@@ -26,7 +26,7 @@ const UserProfile: React.FC = () => {
     }
   };
 
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     return <p>Please log in to view your profile.</p>;
   }
 
@@ -41,6 +41,8 @@ const UserProfile: React.FC = () => {
         </p>
         <p>
           <strong>Name:</strong> {user?.username}
+          <strong>Name:</strong> {user?.phoneNumber}
+          <strong>Name:</strong> {user?.averageRating}
         </p>
         {/* Add more user details as needed */}
       </div>

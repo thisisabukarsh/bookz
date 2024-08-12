@@ -3,9 +3,7 @@
 import { useState, useEffect } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-// import axios from 'axios';
+import axios from "axios";
 
 const serverBaseUrl = "http://localhost:5050";
 
@@ -58,6 +56,7 @@ const PostPage: React.FC<PostPageProps> = ({ initialPost }) => {
           className="p-3 text-blue-600 hover:text-blue-800 transition-colors"
           aria-label="Go back"
         >
+          {/* Uncomment if using FontAwesomeIcon */}
           {/* <FontAwesomeIcon icon={faArrowLeft} size="lg" /> */}
         </button>
         <div className="ml-4 flex flex-col">
@@ -78,7 +77,7 @@ const PostPage: React.FC<PostPageProps> = ({ initialPost }) => {
         onClick={handleToggleFullView}
       >
         <img
-          src={`${post.imageUrl}`}
+          src={`${serverBaseUrl}${post.imageUrl}`}
           alt={post.title}
           className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-110"
         />
@@ -111,26 +110,29 @@ const PostPage: React.FC<PostPageProps> = ({ initialPost }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { postId } = context.query;
+  let initialPost: Post | null = null;
 
-  //   try {
-  //     const response = await axios.get(`${serverBaseUrl}/books/${postId}`);
-  //     initialPost = response.data;
-  //   } catch (error) {
-  //     console.error('Error fetching post:', error);
-  //   }
+  try {
+    const response = await axios.get(`${serverBaseUrl}/books/${postId}`);
+    initialPost = response.data;
+  } catch (error) {
+    console.error("Error fetching post:", error);
+  }
 
-  // Simulated JSON data
-  const initialPost = {
-    id: "1",
-    userId: "123",
-    userName: "John Doe",
-    postDate: "2024-08-12",
-    imageUrl: "/assets/default.png",
-    title: "Sample Post Title",
-    condition: "New",
-    description: "This is a sample description for the post.",
-    phoneNumber: "123456789",
-  };
+  // Simulated JSON data if API request fails
+  if (!initialPost) {
+    initialPost = {
+      id: "1",
+      userId: "123",
+      userName: "John Doe",
+      postDate: "2024-08-12",
+      imageUrl: "/assets/default.png",
+      title: "Sample Post Title",
+      condition: "New",
+      description: "This is a sample description for the post.",
+      phoneNumber: "123456789",
+    };
+  }
 
   return {
     props: {

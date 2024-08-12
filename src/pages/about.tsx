@@ -9,7 +9,7 @@ const AboutUs: React.FC = () => {
   useScrollFadeIn();
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center bg-gray-50 py-16 px-4">
+    <div className="min-h-screen w-full flex flex-col items-center bg-gray-50 py-16 ">
       <HeaderSection />
       <MissionSection />
       <TeamSection />

@@ -4,11 +4,14 @@ import api from "../../api/axios";
 
 interface Post {
   id: string;
-  userId: string;
   title: string;
   condition: string;
   description: string;
-  imageUrl: string;
+  availability: string;
+  category: string;
+  imagesUrl: string[];
+  images: string[];
+  userId: number;
   phoneNumber: string;
 }
 
@@ -30,11 +33,14 @@ const initialState: PostsState = {
 const dummyPosts: Post[] = [
   {
     id: "1",
-    userId: "1",
+    userId: 1,
     title: "Dummy Post",
     condition: "New",
     description: "This is a dummy post.",
-    imageUrl: "https://via.placeholder.com/150",
+    availability: "In Stock", // Added field
+    category: "Electronics", // Added field
+    imagesUrl: ["https://via.placeholder.com/150"],
+    images: [], // Added field (assuming no images initially)
     phoneNumber: "123-456-7890",
   },
 ];
