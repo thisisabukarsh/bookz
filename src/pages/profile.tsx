@@ -4,6 +4,7 @@ import { logout, setPassword } from "../lib/slices/userSlice";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 
 const UserProfile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,9 +30,11 @@ const UserProfile: React.FC = () => {
   if (!isAuthenticated) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-xl text-gray-600">
-          Please log in to view your profile.
-        </p>
+        <Link href="login" className="underline text-blue-400">
+          <p className="text-xl text-gray-600">
+            Please log in to view your profile.
+          </p>
+        </Link>
       </div>
     );
   }

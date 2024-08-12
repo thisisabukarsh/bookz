@@ -26,7 +26,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-md border border-gray-200">
+    <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-md border border-gray-200 my-10">
       <h1 className="text-3xl font-bold mb-4">Login</h1>
 
       {errMsg && <p className="text-red-600 mb-4">{errMsg}</p>}
