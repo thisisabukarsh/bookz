@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GeneralButton from "../buttons/generalButton";
 
 const AddBookCard = () => {
@@ -11,10 +12,12 @@ const AddBookCard = () => {
         </div>
         <div className="hidden lg:flex flex-1"></div>
         <div className="flex justify-center">
-          <GeneralButton
-            title="List your books with us"
-            classes="bg-white py-2 px-4 rounded m-3 text-sm font-semibold"
-          />
+          <Link href={"/add"}>
+            <GeneralButton
+              title="List your books with us"
+              classes="bg-white py-2 px-4 rounded m-3 text-sm font-semibold"
+            />
+          </Link>
         </div>
       </div>
     </div>

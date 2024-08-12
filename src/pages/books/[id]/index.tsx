@@ -73,7 +73,7 @@ const PostPage: React.FC<PostPageProps> = ({ initialPost }) => {
 
       <div
         className={`relative ${
-          isFullView ? "w-full h-80" : "w-full h-56"
+          isFullView ? "w-full h-80" : "w-full min-h-56"
         } mb-8 overflow-hidden rounded-lg cursor-pointer`}
         onClick={handleToggleFullView}
       >
