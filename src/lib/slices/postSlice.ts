@@ -11,7 +11,7 @@ interface Post {
   category: string;
   imagesUrl: string[];
   images: string[];
-  userId: number;
+  // userId: number;
   phoneNumber: string;
 }
 
@@ -33,7 +33,7 @@ const initialState: PostsState = {
 const dummyPosts: Post[] = [
   {
     id: "1",
-    userId: 1,
+    // userId: 1,
     title: "Dummy Post",
     condition: "New",
     description: "This is a dummy post.",
@@ -44,6 +44,23 @@ const dummyPosts: Post[] = [
     phoneNumber: "123-456-7890",
   },
 ];
+
+// Thunk for creating a new post
+export const createPost = createAsyncThunk<Post, FormData>(
+  "posts/createPost",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await api.post<Post>("/books/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue("Failed to create post");
+    }
+  }
+);
 
 // Thunk for fetching posts
 export const fetchPosts = createAsyncThunk<Post[]>(
@@ -105,6 +122,17 @@ const postsSlice = createSlice({
       .addCase(fetchUserPosts.rejected, (state) => {
         state.status = "failed";
         state.error = "Failed to fetch user posts";
+      })
+      .addCase(createPost.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.posts.push(action.payload);
+      })
+      .addCase(createPost.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
       });
   },
 });

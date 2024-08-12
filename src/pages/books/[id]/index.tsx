@@ -61,7 +61,7 @@ const PostPage: React.FC<PostPageProps> = ({ initialPost }) => {
         </button>
         <div className="ml-4 flex flex-col">
           <a
-            href={`/users/${post.userId}`}
+            href={`/member/${post.userId}`}
             className="text-indigo-600 text-xl font-semibold hover:underline"
           >
             {post.userName}

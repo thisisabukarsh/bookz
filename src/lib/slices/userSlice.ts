@@ -12,7 +12,7 @@ interface Post {
   phoneNumber: string;
 }
 interface User {
-  id: string;
+  id: number;
   username: string;
   email: string;
   phoneNumber?: string; // Added phone number
@@ -32,7 +32,7 @@ interface UserState {
 
 // Dummy user data for fallback
 const dummyUser: User = {
-  id: "0",
+  id: 0,
   username: "Guest",
   email: "guest@example.com",
   phoneNumber: "0000000000", // Dummy phone number

@@ -49,7 +49,7 @@ const MemberDetails: React.FC<MemberProps> = ({ memberId }) => {
                   <strong>Description:</strong> {post.description}
                 </p>
                 <img
-                  src={post.imageUrl}
+                  src={post.imagesUrl[0]}
                   alt={post.title}
                   className="w-full h-60 object-cover mt-2"
                 />

@@ -8,7 +8,7 @@ import Image from "next/image";
 const UserProfile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const { user, isAuthenticated, status, error } = useSelector(
+  const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.user
   );
 
