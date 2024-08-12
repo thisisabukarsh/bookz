@@ -60,7 +60,8 @@ const Categories: React.FC = () => {
               key={category.id}
               className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
-              <Link href={`/posts/${category.id}`}>
+              {/* <Link href={`/posts/${category.id}`}> */}
+              <Link href={`/categories/${category.name}`}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-center text-white p-4">
