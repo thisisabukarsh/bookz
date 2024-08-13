@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./slices/userSlice";
 import postsReducer from "./slices/postsSlice";
 import loginReducer from "./slices/loginSlice";
 import signupReducer from "./slices/signupSlice";
@@ -12,8 +11,6 @@ import profileReducer from "./slices/profileSlice";
 
 const store = configureStore({
   reducer: {
-    user: userReducer,
-    posts: postsReducer,
     login: loginReducer,
     signup: signupReducer,
     resetPassword: resetPasswordReducer,
