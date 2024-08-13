@@ -1,3 +1,7 @@
+interface ImageObject {
+  url: string;
+  id: string;
+}
 export interface Book {
   id: number;
   title: string;
@@ -5,7 +9,7 @@ export interface Book {
   description: string;
   availability: string;
   category: string;
-  images: string[];
+  images: ImageObject[];
   imageUrls: string[];
   userId: number;
   userName: string;

@@ -1,5 +1,3 @@
-import { Book } from "./Book";
-
 export interface User {
   id: number;
   username: string;
@@ -11,4 +9,18 @@ export interface User {
   token: string | null;
   books: Book[];
   ratings: number[];
+}
+
+interface Book {
+  id: number;
+  title: string;
+  condition: string;
+  description: string;
+  availability: string;
+  category: string;
+  images: string[];
+  imageUrls: string[];
+  userId: number;
+  userName: string;
+  phoneNumber: string | null;
 }
