@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../lib/store";
-import { loginUser } from "../lib/slices/userSlice";
+import { loginUser } from "../lib/thunks/loginThunk";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
