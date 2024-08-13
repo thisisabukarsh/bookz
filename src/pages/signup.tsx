@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../lib/store";
-import { signupUser } from "../lib/slices/userSlice";
+import { signupUser } from "../lib/thunks/signupThunk";
 
 const USER_REGEX = /^[a-zA-Z\u0600-\u06FF][a-zA-Z0-9\u0600-\u06FF-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -67,10 +67,10 @@ const SignUpPage: React.FC = () => {
     try {
       await dispatch(
         signupUser({
-          Username: username,
-          Email: email,
-          Password: password,
+          username, // Corrected the casing to match the thunk structure
+          email,
           phoneNumber,
+          password,
         })
       ).unwrap();
       setSuccess(true);
@@ -210,7 +210,7 @@ const SignUpPage: React.FC = () => {
 
         <button
           type="submit"
-          className={` bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 ${
+          className={`bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 ${
             !validUsername ||
             !validEmail ||
             !validPassword ||
