@@ -18,7 +18,7 @@ export default function Home() {
         <title>Book-Z</title>
         <meta name="description" content="Home description" />
       </Head>
-      <div className="w-full md:text-xs relative md:h-[550px]">
+      <div className="md:text-xs relative md:h-[550px]">
         <Landing />
       </div>
       <div className="px-4 lg:px-0 mt-10 lg:mt-14 flex justify-center flex-col m-2">

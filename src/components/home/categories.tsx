@@ -61,7 +61,7 @@ const Categories: React.FC = () => {
               className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               {/* <Link href={`/posts/${category.id}`}> */}
-              <Link href={`/categories/${category.name}`}>
+              <Link href={`/books/`}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-center text-white p-4">
@@ -84,7 +84,7 @@ const Categories: React.FC = () => {
         </div>
         {categories.length >= 6 && (
           <div className="mt-8 flex justify-center">
-            <Link href="/more-posts" passHref>
+            <Link href="/books/" passHref>
               <div className="text-center w-screen py-4 px-6 rounded-lg border-2 text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer">
                 Show More
               </div>

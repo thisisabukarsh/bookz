@@ -5,6 +5,7 @@ import { RootState, AppDispatch } from "../../../lib/store";
 import { fetchUserPosts } from "../../../lib/slices/postSlice";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Loading from "@/components/loading";
 
 interface MemberProps {
   memberId: string;
@@ -22,7 +23,7 @@ const MemberDetails: React.FC<MemberProps> = ({ memberId }) => {
   }, [dispatch, memberId]);
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (status === "failed") {

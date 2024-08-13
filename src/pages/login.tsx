@@ -3,6 +3,7 @@ import { RootState, AppDispatch } from "../lib/store";
 import { loginUser } from "../lib/thunks/loginThunk";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Loading from "@/components/loading";
 
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -75,7 +76,7 @@ const LoginPage: React.FC = () => {
           Login
         </button>
 
-        {status === "loading" && <p>Loading...</p>}
+        {status === "loading" && <Loading />}
         {status === "failed" && <p className="text-red-600 mt-4">{error}</p>}
       </form>
 
