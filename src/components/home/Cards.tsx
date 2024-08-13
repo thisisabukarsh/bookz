@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../lib/store";
-import { fetchPosts } from "../../lib/slices/postSlice";
+import { fetchPosts } from "../../lib/thunks/fetchPostsThunk";
 import Link from "next/link";
 import Image from "next/image";
 
 const Cards = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { posts, status } = useSelector((state: RootState) => state.posts);
+  const { posts, status } = useSelector((state: RootState) => state.fetchPosts);
+  console.log(posts);
+  console.log(status);
 
   const baseURL = "http://localhost:5050";
 
