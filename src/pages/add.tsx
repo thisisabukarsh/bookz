@@ -2,36 +2,55 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../lib/store";
-import { createPost } from "../lib/slices/postSlice";
+import { createPost } from "../lib/thunks/createPostThunk";
+import { FormDataType } from "../types/FormData";
 
-interface FormDataType {
-  userId: number;
-  username: string; // Update to user's username from Redux state
-  title: string;
-  condition: string;
-  description: string;
-  availability: string;
-  category: string;
-  images: File[]; // Update to File[]
-  phoneNumber: string;
-}
+const categories = [
+  "Fantasy",
+  "ScienceFiction",
+  "HistoricalFiction",
+  "LiteraryFiction",
+  "Mystery",
+  "Thriller",
+  "AdventureFiction",
+  "Horror",
+  "ContemporaryFantasy",
+  "Memoir",
+  "Classics",
+  "ChildrensLiterature",
+  "ShortStory",
+  "YoungAdult",
+  "Biography",
+  "History",
+  "GraphicNovel",
+  "CrimeFiction",
+  "ContemporaryRomance",
+  "WomensFiction",
+  "Dystopian",
+  "ComedyHorror",
+  "Romance",
+  "DetectiveAndMystery",
+];
+
+const conditions = ["New", "Like_New", "Used", "Damaged"];
 
 const AddPostPage: React.FC = () => {
   const { user, isAuthenticated } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.login
   );
 
   const [formData, setFormData] = useState<FormDataType>({
-    userId: user?.id || 1,
+    userId: user?.id.toString() || "",
     username: user?.username || "",
     title: "",
     condition: "Used",
     description: "",
     availability: "Available",
     category: "Fantasy",
-    images: [], // Initialize as File[]
+    images: [],
     phoneNumber: user?.phoneNumber || "",
   });
+  console.log(formData);
 
   const [imagePreviews, setImagePreviews] = useState<string[]>([]); // For displaying image previews
 
@@ -39,7 +58,9 @@ const AddPostPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -76,7 +97,7 @@ const AddPostPage: React.FC = () => {
 
     try {
       await dispatch(createPost(data)).unwrap();
-      router.push("/posts"); // Redirect to posts page (adjust path if needed)
+      router.push("/books"); // Redirect to posts page (adjust path if needed)
     } catch (error) {
       console.error("Error creating post:", error);
     }
@@ -105,20 +126,47 @@ const AddPostPage: React.FC = () => {
         </div>
         <div className="mb-4">
           <label
+            htmlFor="category"
+            className="block text-gray-700 font-semibold mb-2"
+          >
+            Category
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mb-4">
+          <label
             htmlFor="condition"
             className="block text-gray-700 font-semibold mb-2"
           >
             Condition
           </label>
-          <input
-            type="text"
+          <select
             id="condition"
             name="condition"
             value={formData.condition}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
-          />
+          >
+            {conditions.map((condition) => (
+              <option key={condition} value={condition}>
+                {condition}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="mb-4">
           <label
@@ -162,28 +210,11 @@ const AddPostPage: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="phoneNumber"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Phone Number
-          </label>
-          <input
-            type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
         <button
           type="submit"
           className={`${
             isAuthenticated ? "" : "disabled"
-          }bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300`}
+          } bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300`}
         >
           Add Post
         </button>
