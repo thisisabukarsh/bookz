@@ -21,6 +21,10 @@ const Header: React.FC<HeaderProps> = ({ parentClass }) => {
       title: "Profile",
       route: "/profile",
     },
+    {
+      title: "Books",
+      route: "/books",
+    },
   ];
   return (
     <header className={`${parentClass}`}>

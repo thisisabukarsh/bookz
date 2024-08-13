@@ -15,7 +15,7 @@ const BottomBar: React.FC<BottomBarProps> = (props: BottomBarProps) => {
 
   const buttons = [
     { icon: HomeIcon, title: "home", path: `/` },
-    { icon: SearchIcon, title: "search", path: "/search" },
+    { icon: SearchIcon, title: "search", path: "/books" },
     { icon: AddIcon, title: "add", path: "/add" },
     { icon: PostsIcon, title: "posts", path: "/books" },
     { icon: ProfileIcon, title: "profile", path: "/profile" },
