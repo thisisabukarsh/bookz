@@ -82,6 +82,15 @@ const Categories: React.FC = () => {
             </div>
           ))}
         </div>
+        {categories.length >= 6 && (
+          <div className="mt-8 flex justify-center">
+            <Link href="/more-posts" passHref>
+              <div className="text-center w-screen py-4 px-6 rounded-lg border-2 text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer">
+                Show More
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 const LoginSignUpButton: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { isAuthenticated } = useSelector((state: RootState) => state.user);
+  const { isAuthenticated } = useSelector((state: RootState) => state.login);
 
   if (!isAuthenticated) {
     return (

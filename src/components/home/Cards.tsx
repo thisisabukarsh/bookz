@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../lib/store";
 import { fetchPosts } from "../../lib/thunks/fetchPostsThunk";
@@ -9,67 +9,53 @@ const Cards = () => {
   const dispatch: AppDispatch = useDispatch();
   const { posts, status } = useSelector((state: RootState) => state.fetchPosts);
   console.log(posts);
-  console.log(status);
 
   const baseURL = "http://localhost:5050";
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    if (status === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [dispatch, status]);
 
   const postsToShow = posts.slice(0, 6);
 
-  // console.log(postsToShow[4]?.images?.[0]?.url.toString());
-
   return (
-    <div className="px-4 lg:px-0 flex justify-center">
-      <div className="md:flex flex-col w-screen lg:max-w-screen-dt">
-        <div className="p-4">
-          <div className="container mx-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Posts</h3>
-              <div className="flex items-center">
-                <div className="relative">
-                  {/* Uncomment if you need a search input */}
-                  {/* <input
-                    type="text"
-                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="By Book Name..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  /> */}
+    <div className="flex justify-center px-4 lg:px-0">
+      <div className="w-full max-w-screen-lg mb-16 fade-in opacity-0 transition-opacity duration-600">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          Posts
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {postsToShow.map((post) => (
+            <Link href={`/books/${post.id}`} key={post.id} passHref>
+              <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer">
+                <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-center text-white p-4">
+                    <h3 className="text-xl font-semibold">{post.title}</h3>
+                    {/* Add any additional text or information you want to display on hover */}
+                  </div>
                 </div>
+                <Image
+                  src={`${baseURL}${post.images[0].url}`}
+                  alt={post.title}
+                  width={400}
+                  height={250}
+                  className="object-cover w-full h-48"
+                />
               </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {postsToShow.map((post) => (
-                <Link href={`/books/${post.id}`} key={post.id} passHref>
-                  <div className="card cursor-pointer p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200">
-                    <img
-                      src={`${baseURL}${post?.images[1]?.url}`}
-                      alt={post.title}
-                      width={500}
-                      height={300}
-                      className="w-full h-48 object-cover rounded-md mb-4"
-                    />
-                    <div className="card-content">
-                      <h3 className="text-xl font-semibold">{post.title}</h3>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            {posts.length >= 6 && (
-              <div className="mt-8">
-                <Link href="/more-posts">
-                  <div className="flex items-center justify-center mx-auto max-w-4xl py-4 px-6 rounded-lg border-2 border-blue-500 text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-300 cursor-pointer">
-                    Show More
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
+            </Link>
+          ))}
         </div>
+        {posts.length >= 6 && (
+          <div className="mt-8 flex justify-center">
+            <Link href="/more-posts" passHref>
+              <div className="py-4 text-center w-screen px-6 rounded-lg border-2  text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer">
+                Show More
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
