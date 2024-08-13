@@ -8,6 +8,7 @@ import fetchUserPostsReducer from "./slices/fetchUserPostsSlice";
 import createPostReducer from "./slices/createPostSlice";
 import ratingReducer from "./slices/ratingSlice";
 import profileReducer from "./slices/profileSlice";
+import postReducer from "./slices/postSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     rating: ratingReducer,
     profile: profileReducer,
     DeletePost: postsReducer,
+    post: postReducer,
   },
 });
 
