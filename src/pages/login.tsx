@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const { status, error } = useSelector((state: RootState) => state.user);
+  const { status, error } = useSelector((state: RootState) => state.login);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

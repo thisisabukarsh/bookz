@@ -8,7 +8,6 @@ import Image from "next/image";
 const Cards = () => {
   const dispatch: AppDispatch = useDispatch();
   const { posts, status } = useSelector((state: RootState) => state.fetchPosts);
-  console.log(posts);
 
   const baseURL = "http://localhost:5050";
 
