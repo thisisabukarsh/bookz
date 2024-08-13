@@ -1,6 +1,6 @@
 import { AppDispatch, RootState } from "@/lib/store";
 import Link from "next/link";
-import { logout } from "../../../lib/slices/userSlice";
+import { logout } from "../../../lib/slices/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const LoginSignUpButton: React.FC = () => {
