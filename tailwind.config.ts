@@ -30,6 +30,7 @@ const config: Config = {
         },
       },
       animation: {
+        spin: "spin 1s linear infinite",
         fadeInOut: "fadeInOut 12s forwards",
         blink: "blink 1s step-end infinite",
       },

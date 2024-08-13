@@ -40,7 +40,7 @@ const Cards = () => {
                   alt={post.title}
                   width={400}
                   height={250}
-                  className="object-cover w-full h-48"
+                  className="object-cover w-full h-72"
                 />
               </div>
             </Link>
