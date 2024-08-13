@@ -27,7 +27,7 @@ const Cards = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {postsToShow.map((post) => (
-            <Link href={`/books/${post.id}`} key={post.id} passHref>
+            <Link href={`/book/${post.id}`} key={post.id} passHref>
               <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer">
                 <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white p-4">
@@ -48,7 +48,7 @@ const Cards = () => {
         </div>
         {posts.length >= 6 && (
           <div className="mt-8 flex justify-center">
-            <Link href="/more-posts" passHref>
+            <Link href="/books/" passHref>
               <div className="py-4 text-center w-screen px-6 rounded-lg border-2  text-blue-500 font-semibold text-lg hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer">
                 Show More
               </div>
