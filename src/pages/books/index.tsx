@@ -223,13 +223,13 @@ const BooksPage: React.FC = () => {
                 {/* Large Image with Navigation */}
                 <div className="relative">
                   <Link href={`/book/${book.id}`} key={book.id} passHref>
-                    <Image
-                      src={`${baseURL}${book.images[currentImageIndex].url}`}
-                      width={250}
-                      height={400}
-                      alt={book.title}
-                      className="w-full h-64 object-cover rounded-t-lg md:rounded-t-none md:rounded-l-lg"
-                    />
+                  <Image
+                    src={book.images?.[currentImageIndex]?.url ? `${baseURL}${book.images[currentImageIndex].url}` : '/path/to/default/image.jpg'}
+                    width={250}
+                    height={400}
+                    alt={book.title}
+                    className="w-full h-64 object-cover rounded-t-lg md:rounded-t-none md:rounded-l-lg"
+                  />
                   </Link>
                   {/* Navigation Buttons */}
                   {/* <button

@@ -36,11 +36,10 @@ const Cards = () => {
                   </div>
                 </div>
                 <Image
-                  src={`${baseURL}${post.images[0].url}`}
+                  src={post.images?.[0]?.url ? `${baseURL}${post.images[0].url}` : '/path/to/default/image.jpg'}
                   alt={post.title}
-                  width={400}
-                  height={250}
-                  className="object-cover w-full h-72"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </Link>
