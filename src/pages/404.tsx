@@ -1,11 +1,16 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Head from "next/head";
 
 const Custom404: React.FC = () => {
   const router = useRouter();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-4">
+      <Head>
+        <title>404 Not Found</title>
+        <meta name="description" content="Home description" />
+      </Head>
       <h1 className="text-6xl font-bold text-gray-800 mb-4">404</h1>
       <p className="text-xl text-gray-600 mb-4">
         Sorry, we couldn't find the page you're looking for.
