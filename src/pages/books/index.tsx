@@ -97,7 +97,6 @@ const BooksPage: React.FC = () => {
       selectedCondition === "All Conditions"
         ? true
         : book.condition === selectedCondition;
-    console.log(book.condition);
     const matchesSearchTerm = book.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());

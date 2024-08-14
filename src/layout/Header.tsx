@@ -14,16 +14,16 @@ const Header: React.FC<HeaderProps> = ({ parentClass }) => {
       route: "/",
     },
     {
-      title: "About",
-      route: "/about",
+      title: "Books",
+      route: "/books",
     },
     {
       title: "Profile",
       route: "/profile",
     },
     {
-      title: "Books",
-      route: "/books",
+      title: "About",
+      route: "/about",
     },
   ];
   return (
